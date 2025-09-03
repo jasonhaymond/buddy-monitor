@@ -1,0 +1,11 @@
+[Unit]
+Description=Buddy external uptime monitor
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/buddy-monitor
+EnvironmentFile=%h/buddy-monitor/.env
+ExecStart=/usr/bin/env bash -lc './monitor.sh'
+Nice=10

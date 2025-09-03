@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  buddy-monitor:
+    build: .
+    container_name: buddy-monitor
+    restart: unless-stopped
+    env_file:
+      - ../.env
+    environment:
+      # override default schedule here if desired
+      CRON_EXPR: "*/2 * * * *"
+    volumes:
+      - state:/var/tmp/buddy-monitor
+    healthcheck:
+      test: ["CMD", "bash", "-lc", "./monitor.sh --once >/dev/null 2>&1 || exit 1"]
+      interval: 2m
+      timeout: 20s
+      retries: 2
+      start_period: 20s
+
+volumes:
+  state:

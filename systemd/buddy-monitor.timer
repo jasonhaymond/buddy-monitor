@@ -1,0 +1,10 @@
+[Unit]
+Description=Run buddy-monitor every 2 minutes
+
+[Timer]
+OnUnitActiveSec=2min
+AccuracySec=30s
+Unit=buddy-monitor.service
+
+[Install]
+WantedBy=timers.target

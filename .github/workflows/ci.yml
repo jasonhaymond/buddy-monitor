@@ -1,0 +1,31 @@
+name: CI
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ShellCheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+      - name: Bash syntax check
+        run: |
+          bash -n monitor.sh lib/tg.sh lib/utils.sh setup.sh
+      - name: ShellCheck
+        run: |
+          shellcheck monitor.sh lib/tg.sh lib/utils.sh setup.sh || true
+
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: |
+          cd docker
+          docker build -t buddy-monitor:ci .
+      - name: Compose config
+        run: |
+          cd docker
+          docker compose config

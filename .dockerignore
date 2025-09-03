@@ -1,0 +1,9 @@
+.git
+.github
+*.swp
+*.swo
+*.log
+node_modules
+__pycache__
+.env
+.DS_Store
