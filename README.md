@@ -69,6 +69,7 @@ External uptime monitoring you can host on a friend's (or your own external) Lin
 | `PING_HOSTS` | Comma-separated hostnames to ping (e.g. `example.com,chat.haymondtechnologies.com`) |
 | `HTTP_URLS` | Comma-separated URLs to check via HTTP(S) |
 | `SSL_HOSTS` | Comma-separated hostnames (optionally `host:port`) for TLS expiry checks |
+| `HTTP_OK_REGEX` | Define HTTP valid responses in REGEX |
 | `SSL_WARN_DAYS` | Days before expiry to trigger **warning** (default 21) |
 | `SSL_ALERT_DAYS` | Days before expiry to trigger **alert** (default 7) |
 | `CHECK_TIMEOUT` | Per-check timeout seconds (default 7) |
