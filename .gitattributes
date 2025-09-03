@@ -1,0 +1,10 @@
+* text=auto
+
+# Force LF where it matters
+*.sh            text eol=lf
+systemd/*       text eol=lf
+cron/*          text eol=lf
+docker/*        text eol=lf
+.github/**      text eol=lf
+*.service       text eol=lf
+*.timer         text eol=lf
